@@ -96,8 +96,6 @@ theorem nw_mono_in_score
             max_mono hd hu
           exact max_mono h1 hl
 
-/-! ### Concrete examples -/
-
 def exampleScore (a b : Char) : Int := if a = b then 1 else -1
 def exampleGap : Int := -2
 
