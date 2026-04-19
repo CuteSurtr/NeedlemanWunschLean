@@ -68,7 +68,7 @@ NeedlemanWunschLean/
 
 ## Why this project
 
-This is the theorem-prover complement of a mathematical-oncology portfolio (NMF mutation signatures, Cox PH survival, DP-mixture clonal evolution). It shows that alignment algorithms — the computational core of modern bioinformatics — can be mechanically checked by a proof assistant, including the full optimality statement that the traceback achieves the DP optimum over every possible alignment.
+This is the theorem-prover complement of a mathematical-oncology portfolio (NMF mutation signatures, Cox PH survival, DP-mixture clonal evolution). It shows that alignment algorithms .The computational core of modern bioinformatics can be mechanically checked by a proof assistant, including the full optimality statement that the traceback achieves the DP optimum over every possible alignment.
 
 ## References
 
