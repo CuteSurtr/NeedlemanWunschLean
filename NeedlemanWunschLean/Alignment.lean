@@ -89,6 +89,44 @@ theorem toYs_align (s : α → α → Int) (g : Int) :
             · simp [toYs]; exact ihxs (y :: ys)
             · simp [toYs]; exact ihys
 
+theorem toXs_length (s : α → α → Int) (g : Int) (xs ys : List α) :
+    (toXs (align s g xs ys)).length = xs.length := by
+  rw [toXs_align]
+
+theorem toYs_length (s : α → α → Int) (g : Int) (xs ys : List α) :
+    (toYs (align s g xs ys)).length = ys.length := by
+  rw [toYs_align]
+
+theorem alignScore_cons (s : α → α → Int) (g : Int)
+    (step : AlignStep α) (rest : Alignment α) :
+    alignScore s g (step :: rest) = stepScore s g step + alignScore s g rest := by
+  simp [alignScore]
+
+theorem gap_times_succ (g : Int) (n : Nat) :
+    g * ((n + 1 : Nat) : Int) = g * (n : Int) + g := by
+  have h : ((n + 1 : Nat) : Int) = (n : Int) + 1 := by
+    show Int.ofNat (n + 1) = Int.ofNat n + 1
+    rfl
+  rw [h, Int.mul_add, Int.mul_one]
+
+theorem alignScore_nil_left (s : α → α → Int) (g : Int) (ys : List α) :
+    alignScore s g (align s g [] ys) = g * (ys.length : Int) := by
+  induction ys with
+  | nil => simp [align, alignScore]
+  | cons y ys ih =>
+      simp only [align, alignScore, stepScore, List.length_cons]
+      rw [ih, gap_times_succ]
+      omega
+
+theorem alignScore_nil_right (s : α → α → Int) (g : Int) (xs : List α) :
+    alignScore s g (align s g xs []) = g * (xs.length : Int) := by
+  induction xs with
+  | nil => simp [align, alignScore]
+  | cons x xs ih =>
+      simp only [align, alignScore, stepScore, List.length_cons]
+      rw [ih, gap_times_succ]
+      omega
+
 theorem nw_symm_of_symmetric_score
     (s : α → α → Int) (g : Int)
     (hsymm : ∀ a b, s a b = s b a) :
