@@ -1,7 +1,10 @@
 # NeedlemanWunschLean
 
-Formally verified Needleman–Wunsch global sequence alignment in Lean 4
+Formally verified Needleman-Wunsch global sequence alignment in Lean 4
 with `mathlib`.
+
+**Build:** `lake build` (Lean 4 + mathlib). 38 machine-checked theorems,
+no `sorry` / `admit`. **License:** MIT.
 
 This project implements the classic dynamic-programming score of
 Needleman and Wunsch (1970) as a function
