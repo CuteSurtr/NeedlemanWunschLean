@@ -290,21 +290,4 @@ theorem nw_ge_diag_self_score (s : α → α → Int) (g : Int) (xs : List α) :
   rw [alignScore_diagSelf] at h1
   exact h1
 
-theorem example_hello_self : nw exampleScore exampleGap "HELLO".toList "HELLO".toList = 5 := by
-  native_decide
-
-theorem example_gattaca_self : nw exampleScore exampleGap "GATTACA".toList "GATTACA".toList = 7 := by
-  native_decide
-
-theorem example_abc_empty : nw exampleScore exampleGap "ABC".toList [] = -6 := by
-  simp [nw, exampleGap]
-
-theorem example_empty_xyz : nw exampleScore exampleGap [] "XYZ".toList = -6 := by
-  simp [nw, exampleGap]
-
-theorem align_hello_self_correct :
-    alignScore exampleScore exampleGap
-      (align exampleScore exampleGap "HELLO".toList "HELLO".toList) = 5 := by
-  rw [alignScore_eq_nw, example_hello_self]
-
 end NW

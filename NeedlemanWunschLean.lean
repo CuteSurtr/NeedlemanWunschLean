@@ -1,3 +1,4 @@
 import NeedlemanWunschLean.Basic
 import NeedlemanWunschLean.Alignment
 import NeedlemanWunschLean.DP
+import NeedlemanWunschLean.Examples
