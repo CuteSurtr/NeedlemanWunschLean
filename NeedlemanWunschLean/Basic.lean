@@ -53,20 +53,7 @@ theorem nw_achieves_one_of_three (s : α → α → Int) (g : Int)
     nw s g (x :: xs) (y :: ys) = nw s g xs ys + s x y ∨
     nw s g (x :: xs) (y :: ys) = nw s g xs (y :: ys) + g ∨
     nw s g (x :: xs) (y :: ys) = nw s g (x :: xs) ys + g := by
-  rw [nw_bellman]
-  have h : max (max (nw s g xs ys + s x y)
-                    (nw s g xs (y :: ys) + g))
-               (nw s g (x :: xs) ys + g)
-           = (nw s g xs ys + s x y) ∨
-           max (max (nw s g xs ys + s x y)
-                    (nw s g xs (y :: ys) + g))
-               (nw s g (x :: xs) ys + g)
-           = (nw s g xs (y :: ys) + g) ∨
-           max (max (nw s g xs ys + s x y)
-                    (nw s g xs (y :: ys) + g))
-               (nw s g (x :: xs) ys + g)
-           = (nw s g (x :: xs) ys + g) := by omega
-  exact h
+  rw [nw_bellman]; omega
 
 theorem nw_mono_in_score
     (s₁ s₂ : α → α → Int) (g : Int)
